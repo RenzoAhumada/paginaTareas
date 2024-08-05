@@ -1,14 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-const tarea = (task, taskComplete, deleteTask) => {
+const Tarea = ({ task, taskComplete, deleteTask }) => {
   return (
-    <div>
-        <span onClick={() => taskComplete(task.id)}>
-        {tarea.task}</span>
-        <button className="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded" onClick={()=> deleteTask}>Eliminar</button>
+    <div className="flex justify-between items-center bg-gray-100 p-4 rounded mb-2">
+      <span
+        className={`flex-1 ${task.completed ? 'line-through' : ''}`}
+        onClick={() => taskComplete(task.id)}
+      >
+        {task.task}
+      </span>
+      <button
+        className="ml-4 text-white bg-indigo-500 py-2 px-5 rounded hover:bg-indigo-600"
+        onClick={() => deleteTask(task.id)}
+      >
+        Eliminar
+      </button>
     </div>
+  );
+};
 
-  )
-}
-
-export default tarea;
+export default Tarea;
