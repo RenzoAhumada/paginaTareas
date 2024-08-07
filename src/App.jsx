@@ -22,11 +22,27 @@ function App() {
     setTareas(tareas.filter((tarea) => tarea.id !== id));
   };
 
+  const modifiTask = (id) => {
+    const newTask = prompt("Modifica la tarea:");
+    if (newTask) {
+      setTareas(
+        tareas.map((tarea) =>
+          tarea.id === id ? { ...tarea, task: newTask } : tarea
+        )
+      );
+    }
+  };
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold text-center mb-6">Tarea APP</h1>
       <TareasForm addTarea={addTarea} />
-      <TareasList tareas={tareas} taskComplete={taskComplete} deleteTask={deleteTask} />
+      <TareasList
+        tareas={tareas}
+        taskComplete={taskComplete}
+        deleteTask={deleteTask}
+        modifiTask={modifiTask}
+      />
     </div>
   );
 }
